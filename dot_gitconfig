@@ -1,0 +1,7 @@
+[pull]
+	rebase = true
+[init]
+	defaultBranch = master
+[user]
+	email = hashira777@qq.com
+	name = hashira

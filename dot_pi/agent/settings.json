@@ -1,0 +1,27 @@
+{
+  "lastChangelogVersion": "0.78.0",
+  "packages": [
+    {
+      "source": "npm:pi-rtk-optimizer",
+      "extensions": [
+        "+index.ts"
+      ]
+    },
+    "npm:pi-subagents",
+    "npm:@narumitw/pi-plan-mode",
+    "npm:pi-hashline-edit",
+    "git:github.com/jonjonrankin/pi-caveman",
+    "git:github.com/huggingface/pi-llama"
+  ],
+  "defaultProvider": "openrouter",
+  "defaultModel": "deepseek/deepseek-v4-flash",
+  "defaultThinkingLevel": "high",
+  "extensions": [
+    "~/.pi/agent/extensions/agentmemory"
+  ],
+  "enabledModels": [
+    "llama-cpp/unsloth/gemma-4-E4B-it-GGUF:UD-IQ2_M",
+    "openrouter/openrouter/free",
+    "openrouter/deepseek/deepseek-v4-flash"
+  ]
+}

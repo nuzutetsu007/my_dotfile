@@ -1,0 +1,50 @@
+# ===== Ghostty Configuration =====
+
+# ----- 字体 -----
+font-size = 17
+
+# ----- 更新 -----
+auto-update = off
+
+# ----- SSH 集成（Ghostty 1.2.0+） -----
+# SSH 会话使用 xterm-256color，不安装 terminfo（方法2）
+#shell-integration-features = ssh-env
+
+# ----- 窗口行为 -----
+# 启动时最大化
+# maximize = true
+
+# 窗口透明度
+background-opacity = 1.0
+
+# 窗口填充（内边距）
+# window-padding-x = 4
+# window-padding-y = 2
+
+# ----- 快捷键 -----
+# 将 Option/Alt 键作为 Meta 键（对 Emacs、readline 等很有用）
+# alt-key-as-meta = false
+
+# 复制选中文本到剪贴板
+# copy-on-select = clipboard
+
+# ----- 主题 -----
+# 主题设置（可选值很多，用 ghostty +list-themes 查看）
+# theme = catppuccin-mocha
+
+# ----- 性能 -----
+# GPU 渲染 vs CPU 回退（默认 auto）
+# renderer = gpu
+
+# ----- 终端行为 -----
+# 光标样式
+# cursor-style = block
+# cursor-style-blink = true
+
+# ----- 鼠标 -----
+# 允许按住 Alt+点击来移动光标位置
+# mouse-hide-while-typing = true
+
+# ----- Shell -----
+# 自定义 shell 启动命令
+# command = /usr/bin/zsh
