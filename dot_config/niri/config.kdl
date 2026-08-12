@@ -18,13 +18,8 @@ input {
     keyboard {
         xkb {
             // You can set rules, model, layout, variant and options.
-            // For more information, see xkeyboard-config(7).
-
-            // For example:
-            // layout "us,ru"
-           
+            // For more information, see xkeyboard-config(7).           
              options "grp:win_space_toggle,compose:esc:nocaps,caps:escape"
-
             // If this section is empty, niri will fetch xkb settings
             // from org.freedesktop.locale1. You can control these using
             // localectl set-x11-keymap.
@@ -48,7 +43,7 @@ input {
         // accel-speed 0.2
         // accel-profile "flat"
         // scroll-method "two-finger"
-        // disabled-on-external-mouse
+         disabled-on-external-mouse
     }
 
     mouse {
@@ -94,7 +89,6 @@ output "eDP-1" {
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
     position x=1280 y=0
-    off
 }
 output "HDMI-A-1" {
     // ...settings for HDMI-A-1...
@@ -258,6 +252,9 @@ binds {
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
+    // Move the focused window between the floating and the tiling layout.
+    Mod+V       { toggle-window-floating; }
+    Mod+Ctrl+V { switch-focus-between-floating-and-tiling; }
     // Consume one window from the right to the bottom of the focused column.
     Mod+Comma  { consume-window-into-column; }
     // Expel the bottom window from the focused column to the right.
