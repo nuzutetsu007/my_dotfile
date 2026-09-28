@@ -119,6 +119,7 @@ layout {
 }
 
 spawn-at-startup "noctalia" "--daemon"
+spawn-at-startup "/home/hashira/.local/bin/kwallet-pam-init"
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     // skip-at-startup

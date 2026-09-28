@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=KWallet PAM Socket Connection
-Comment=Hand the PAM session environment to ksecretd so the wallet is unlocked at login
-Exec=/usr/lib/pam_kwallet_init
+Comment=Hand the PAM session environment to ksecretd (retries: stock script races ksecretd's bind/listen)
+Exec=/home/hashira/.local/bin/kwallet-pam-init
 NoDisplay=true
 StartupNotify=false

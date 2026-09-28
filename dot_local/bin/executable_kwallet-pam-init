@@ -1,0 +1,68 @@
+#!/bin/sh
+# Robust replacement for /usr/lib/pam_kwallet_init.
+#
+# Why this exists
+# ---------------
+# pam_kwallet5.so (session phase) forks ksecretd in this order:
+#     unlink(socket) -> bind() -> listen() -> close(2) -> daemonize -> execve(ksecretd)
+# COSMIC and niri start autostart entries the moment graphical-session.target is
+# reached, i.e. while that window is still open. The stock script then fails with
+#     socat ... E connect(.../kwallet5.socket): Connection refused
+# exits non-zero, and kdewallet stays LOCKED for the whole session. Chrome cannot
+# read its "Chrome Safe Storage" key through org.freedesktop.portal.Secret
+# afterwards, and appears signed out.
+#
+# Also note the handshake is single-shot: once ksecretd has accepted the
+# connection it closes the listening socket, so a second run must not retry
+# blindly -- it has to recognise that the job is already done.
+#
+# So: exit early if the wallet is already unlocked, otherwise retry the
+# handshake until ksecretd accepts, then confirm the result.
+#
+# Usage: ~/.local/bin/kwallet-pam-init      (no arguments)
+# Requires PAM to be configured (pam_kwallet5.so); without it there is no socket
+# and the script exits 0 doing nothing.
+
+set -u
+
+sock=${PAM_KWALLET5_LOGIN:-${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/kwallet5.socket}
+
+# Not configured for this session => nothing to do.
+[ -e "$sock" ] || exit 0
+
+# Hand the session environment to ksecretd -- same payload as the stock script,
+# so the daemon learns the session bus / runtime dir before it starts serving.
+handshake() {
+    QUOTING_STYLE=literal env -u QUOTING_STYLE | socat STDIN UNIX-CONNECT:"$sock" >/dev/null 2>&1
+}
+
+# The end state we actually care about.
+wallet_unlocked() {
+    [ "$(busctl --user get-property org.freedesktop.secrets \
+            /org/freedesktop/secrets/collection/kdewallet \
+            org.freedesktop.Secret.Collection Locked 2>/dev/null)" = "b false" ]
+}
+
+# 1. Already handed over earlier in this session (listener is gone, wallet open).
+wallet_unlocked && exit 0
+
+# 2. Retry while ksecretd is still between bind() and listen().
+i=0
+while [ "$i" -lt 100 ]; do                 # ~10s
+    i=$((i + 1))
+    if handshake; then
+        j=0
+        while [ "$j" -lt 30 ]; do          # ~3s, best effort
+            wallet_unlocked && exit 0
+            j=$((j + 1))
+            sleep 0.1
+        done
+        exit 0
+    fi
+    # Another instance may have completed the handshake meanwhile.
+    wallet_unlocked && exit 0
+    sleep 0.1
+done
+
+logger -t kwallet-pam-init "gave up waiting for ${sock} after 10s; kdewallet may stay locked"
+exit 1
