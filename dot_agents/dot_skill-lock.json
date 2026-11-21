@@ -1,0 +1,95 @@
+{
+  "version": 3,
+  "skills": {
+    "pptx": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anthropics/skills.git",
+      "skillPath": "skills/pptx/SKILL.md",
+      "skillFolderHash": "",
+      "pluginName": "document-skills",
+      "installedAt": "2026-04-25T06:01:34.156Z",
+      "updatedAt": "2026-04-25T06:11:46.478Z"
+    },
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anthropics/skills.git",
+      "skillPath": "skills/skill-creator/SKILL.md",
+      "skillFolderHash": "3cf9a8db32597ba3e24b584a3d696f4e11c7d7b6",
+      "pluginName": "example-skills",
+      "installedAt": "2026-06-13T07:58:10.993Z",
+      "updatedAt": "2026-06-13T07:58:10.993Z"
+    },
+    "browse": {
+      "source": "anomalyco/browse",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anomalyco/browse.git",
+      "skillPath": "cli/skills/browse/SKILL.md",
+      "skillFolderHash": "cdb9a9f61fd07a55deb2c46cf54cb374b36cbbbe",
+      "installedAt": "2026-11-12T07:32:59.651Z",
+      "updatedAt": "2026-11-12T07:32:59.651Z"
+    },
+    "setup-arcreel-skills": {
+      "source": "ArcReel/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/ArcReel/skills.git",
+      "commit": "2f1830bd27ac19e7e57004156249f1bcd17bbf04",
+      "skillPath": "skills/setup-arcreel-skills/SKILL.md",
+      "skillFolderHash": "9ed08f9eaa45739ee8b06e51ee46dd344ea541aa",
+      "pluginName": "arcreel",
+      "installedAt": "2026-11-18T12:34:11.531Z",
+      "updatedAt": "2026-11-18T12:34:11.531Z"
+    },
+    "video-workflow": {
+      "source": "ArcReel/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/ArcReel/skills.git",
+      "commit": "2f1830bd27ac19e7e57004156249f1bcd17bbf04",
+      "skillPath": "skills/video-workflow/SKILL.md",
+      "skillFolderHash": "3a8be4df43c706a38e60e3307f95037c7a16e4b8",
+      "pluginName": "arcreel",
+      "installedAt": "2026-11-18T12:34:11.534Z",
+      "updatedAt": "2026-11-18T12:34:11.534Z"
+    },
+    "kie-chat-agents": {
+      "source": "kie.ai",
+      "sourceType": "well-known",
+      "sourceUrl": "https://kie.ai/.well-known/agent-skills/kie-chat-agents.tar.gz",
+      "skillFolderHash": "",
+      "sourceBaseUrl": "https://kie.ai",
+      "wellKnownDigest": "sha256:260f8bdbde711a0e901480c30c771d0f457e8921b9e3fb86369f656cac77a737",
+      "installedAt": "2026-11-19T08:34:43.072Z",
+      "updatedAt": "2026-11-19T08:34:43.072Z"
+    },
+    "kie-models": {
+      "source": "kie.ai",
+      "sourceType": "well-known",
+      "sourceUrl": "https://kie.ai/.well-known/agent-skills/kie-models.tar.gz",
+      "skillFolderHash": "",
+      "sourceBaseUrl": "https://kie.ai",
+      "wellKnownDigest": "sha256:4e409aa83a7076fba267884d6c6baf74c25b902cb12964656f48fc8940388ec4",
+      "installedAt": "2026-11-19T08:34:43.074Z",
+      "updatedAt": "2026-11-19T08:34:43.074Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "cline",
+    "codex",
+    "cursor",
+    "droid",
+    "fx",
+    "gemini-cli",
+    "github-copilot",
+    "kilo",
+    "kimi-code-cli",
+    "opencode",
+    "pi",
+    "warp",
+    "zed"
+  ]
+}
